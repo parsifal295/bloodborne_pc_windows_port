@@ -271,6 +271,7 @@ static void apply_keyboard(PadData *d, const bool *k) {
 }
 
 static void sample_host(PadData *d) {
+    bbgpu_anti_lag_input(); /* AMD Anti-Lag: the frame's input stage starts here */
     report_guest_heap();
     memset(d,0,sizeof(*d));
     d->left_x=d->left_y=d->right_x=d->right_y=128;
